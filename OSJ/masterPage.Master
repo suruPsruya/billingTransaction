@@ -1,0 +1,152 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="masterPage.master.cs" Inherits="OSJ.masterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+  
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+        body
+        {
+            background-color: #000000;   
+        }
+        .hover-gridview tbody tr:hover 
+        {
+            background-color: #f5f5f5; /* Change this to your desired hover background color */
+            color: #000000;
+        }
+        .headTask
+        {
+            padding-left: 15px;  background-image: linear-gradient(#03155B, #03155B, #03155B); color: White;    
+        }
+        .leftNav
+        {
+            text-align: left; font-size: 24px;
+        }
+        .homeNav
+        {
+            float: left; padding-right: 21px;
+        }
+        .fontColor{
+            color: white
+        }
+        .dropdown{
+            padding-right: 21px; float: left;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .btn1
+        {
+           padding-bottom: 7px; padding-Top: 7px; padding-left: 10px; padding-right: 10px; border-top-left-radius: 5px;
+           border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; font-family: Century;
+        } 
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+    <div class="container-fluid">
+            <div class="row headTask">
+                <div class="col-md-3 leftNav">
+                    <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="White" 
+                                Font-Underline="False"><b>Suru</b></asp:LinkButton>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4 centerNav" style="margin-top: 10px;">
+                    <asp:LinkButton ID="LinkButton2" CssClass="homeNav" runat="server" ForeColor="White" 
+                      Font-Underline="False" OnClick="LinkButton2_Click">Home</asp:LinkButton>
+                    <div class="dropdown">
+                        Master
+                        <ul class="dropdown-menu" style="background-color: #03155B">
+                            <li><a class="dropdown-item fontColor" href="ItemsDetails.aspx"><i class="fa fa-list-alt"></i>&nbsp; Items</a></li>
+                            <li><a class="dropdown-item fontColor" href="VenderDetails.aspx"><i class="fa fa-list-alt"></i>&nbsp; Venders</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        Stock & Inventory
+                        <ul class="dropdown-menu" style="background-color: #03155B">
+                            <li><a class="dropdown-item fontColor" href="StockInDetails.aspx"><i class="fa fa-shopping-cart"></i>&nbsp; Stock In</a></li>
+                            <li><a class="dropdown-item fontColor" href="StockRegister.aspx"><i class="fa fa-registered"></i>&nbsp; Stock Register</a></li>
+                            <li><a class="dropdown-item fontColor" href="StockInRegister.aspx"><i class="fa fa-plus-square" style="color: #69D101;"></i>&nbsp; Stock In Register</a></li>
+                            <li><a class="dropdown-item fontColor" href="StockOutRegisterGold.aspx"><i class="fa fa-plus-square" style="color: #FA8C00;"></i>&nbsp; Stock Out Register [Gold]</a></li>
+                            <li><a class="dropdown-item fontColor" href="StockOutRegisterSilver.aspx"><i class="fa fa-plus-square" style="color: #FA8C00;"></i>&nbsp; Stock Out Register [Silver]</a></li>
+                            <li><hr class="dropdown-divider fontColor"></li>
+                            <li><a class="dropdown-item fontColor" href="EstimateReport.aspx"><i class="fa fa-envelope-open"></i>&nbsp; Estimate Report</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        Report
+                        <ul class="dropdown-menu" style="background-color: #03155B">
+                            <li><a class="dropdown-item fontColor" href="CreditListDateWise.aspx"><i class="fa fa-file" style="color: Red;"></i>&nbsp; Creditlist Datewise</a></li>
+                            <li><a class="dropdown-item fontColor" href="PaymentDateWise.aspx"><i class="fa fa-file" style="color: Blue;"></i>&nbsp; C Column Reports</a></li>
+                            <li><a class="dropdown-item fontColor" href="CreditBalanceDatewise.aspx"><i class="fa fa-file" style="color: #FA8C00;"></i>&nbsp; D Column Reports</a></li>
+                            <li><a class="dropdown-item fontColor" href="BillingReports.aspx"><i class="fa fa-file" style="color: #A2F62F;"></i>&nbsp; Billing Report</a></li>
+                            <li><hr class="dropdown-divider fontColor" /></li>
+                            <li><a class="dropdown-item fontColor" href="TagwiseReport.aspx"><i class="fa fa-envelope-open" style="color: Purple;"></i>&nbsp; Tagwise Report</a></li>
+                            <li><a class="dropdown-item fontColor" href="TagDeleteReport.aspx"><i class="fa fa-trash" style="color: Red;"></i>&nbsp; Tag Delete Report</a></li>
+                            <li><a class="dropdown-item fontColor" href="CaratwiseReport.aspx"><i class="fa fa-file"></i>&nbsp; Caratwise report</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown" style="color: #03155B">
+                        Setting
+                        <ul class="dropdown-menu" style="background-color: #03155B">
+                            <li><a class="dropdown-item fontColor" href="Users.aspx"><i class="fa fa-user"></i>&nbsp; View Profile</a></li>
+                            <li><a class="dropdown-item fontColor" href="Delete.aspx"><i class="fa fa-trash" style="color:Red"></i>&nbsp; Delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1" style="margin-top: 10px;">
+                    <asp:LinkButton ID="LinkButton7" runat="server" ForeColor="White" 
+                        Font-Underline="False">Sign out</asp:LinkButton>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 20px; background-image: linear-gradient(#03155B, #5B0305, #000000); padding-bottom: 20px;">
+                <center>
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/om-shivam-hindu-round-symbol-260nw-1590811036.jpg" 
+                        Height="54px" Width="60px" />
+                    <p style="color: #F0BCBC; font-family: Century; font-size: 21px;">Surya</p>
+                    <div  class="optionBar" style="background-size: cover; background-attachment: fixed;">
+                        <p style="color: #F0C9BC; margin-top: -20px; font-size: 15px;" class="menuHeadText">Administration</p>
+                    </div>
+                    <b>
+                    <asp:LinkButton ID="LinkButton3" runat="server" ForeColor="#BCCBF0" 
+                      Font-Underline="False" OnClick="LinkButton3_Click">Billing</asp:LinkButton></b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <b>
+                    <asp:LinkButton ID="LinkButton5" runat="server" ForeColor="#BCCBF0" 
+                      Font-Underline="False">Credit 25K</asp:LinkButton></b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <b>
+                    <asp:LinkButton ID="LinkButton6" runat="server" ForeColor="#BCCBF0" 
+                      Font-Underline="False">DB Backup</asp:LinkButton></b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <b>
+                    <asp:LinkButton ID="LinkButton4" runat="server" ForeColor="#BCCBF0" 
+                      Font-Underline="False">Fine</asp:LinkButton></b>
+                </center>  
+                
+                <div class="container" style="padding-top: 20px;">
+</div>
+            </div>
+    </div>
+
+    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+    </asp:ContentPlaceHolder>
+</div>
+    </form>
+</body>
+</html>
